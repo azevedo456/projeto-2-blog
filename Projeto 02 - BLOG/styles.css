@@ -1,0 +1,225 @@
+@charset "UTF-8"; /* Define o conjunto de caracteres como UTF-8 */
+
+/* Estilos Globais */
+* {
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove preenchimentos padrão */
+  box-sizing: border-box; /* Inclui padding e borda nas dimensões do elemento */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Remove o destaque de toque em dispositivos móveis */
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0); /* Remove o destaque de toque em dispositivos Firefox */
+}
+
+/* Variáveis de Cores e Fontes */
+:root {
+  --font-principal: 'Open Sans', sans-serif; /* Fonte principal do site */
+  --bg-color: #fafafa; /* Cor de fundo padrão */
+  --color01: #444; /* Cor de texto principal */
+  --color02: #37a1f7; /* Cor de destaque (hover) */
+  --color03: #ddd; /* Cor de borda e fundo secundário */
+  --color04: #07060648; /* Cor semi-transparente */
+}
+
+/* Estilos para o tema escuro */
+.dark {
+  --bg-color: #1c1c1c; /* Cor de fundo no modo escuro */
+  --color01: #fafafa; /* Cor de texto no modo escuro */
+  --color03: #37a1f7; /* Cor de destaque no modo escuro */
+}
+
+/* Estilos para links */
+a {
+  text-decoration: none; /* Remove o sublinhado dos links */
+  color: var(--color01); /* Cor do texto dos links */
+  transition: .3s; /* Animação suave para alterações de estilo */
+}
+a:hover {
+  color: var(--color02); /* Cor do texto ao passar o mouse */
+}
+
+/* Estilos para listas */
+ul {
+  list-style: none; /* Remove marcadores de listas */
+}
+
+/* Estilos do corpo */
+body {
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  background-color: var(--bg-color); /* Cor de fundo */
+  color: var(--color01); /* Cor do texto */
+  font-family: var(--font-principal); /* Fonte do corpo */
+  overflow-x: hidden; /* Remove rolagem horizontal */
+}
+
+/* Cabeçalho */
+header {
+  background-color: var(--bg-color); /* Cor de fundo do cabeçalho */
+  display: flex; /* Usa flexbox para layout */
+  justify-content: center; /* Centraliza o conteúdo */
+  align-items: center; /* Alinha verticalmente o conteúdo */
+  height: 90px; /* Altura do cabeçalho */
+  border-bottom: 2px solid var(--color01); /* Borda inferior */
+}
+
+/* Estilos para o container do navbar */
+header #navbar-container,
+header #navbar-inner,
+header #navbar #navbar-list,
+header #darkmode-container {
+  display: flex; /* Usa flexbox para layout */
+}
+
+/* Estilos específicos do container do navbar */
+header #navbar-container {
+  justify-content: space-between; /* Espaçamento entre elementos */
+  align-items: center; /* Alinhamento vertical */
+  width: 90%; /* Largura do container */
+  max-width: 1280px; /* Largura máxima */
+}
+
+/* Estilos para o conteúdo interno do navbar */
+header #navbar-inner {
+  align-items: center; /* Alinhamento vertical */
+  gap: 2.5rem; /* Espaçamento entre elementos */
+}
+header #navbar #navbar-list {
+  gap: 1rem; /* Espaçamento entre itens da lista */
+}
+
+/* Estilos para o container do modo escuro */
+header #darkmode-container {
+  background-color: var(--color03); /* Cor de fundo do switch */
+  width: 65px; /* Largura do switch */
+  height: 25px; /* Altura do switch */
+  padding: .5rem; /* Preenchimento */
+  border-radius: 1rem; /* Bordas arredondadas */
+  justify-content: space-between; /* Espaçamento entre elementos */
+  align-items: center; /* Alinhamento vertical */
+  position: relative; /* Para posicionamento absoluto interno */
+}
+
+/* Ícones do menu móvel */
+header #icon-menu {
+  display: none; /* Esconde ícone de menu em telas grandes */
+}
+header #navbar-inner #close-menu {
+  display: none; /* Esconde ícone de fechar menu em telas grandes */
+}
+
+/* Estilos para os ícones do modo escuro */
+header #darkmode-container i {
+  background-color: var(--color04); /* Cor de fundo do ícone */
+  font-size: 1.2rem; /* Tamanho da fonte do ícone */
+  width: 32px; /* Largura do ícone */
+  line-height: 32px; /* Altura do ícone */
+  text-align: center; /* Centraliza o texto no ícone */
+  border-radius: 50%; /* Arredonda o ícone */
+  position: absolute; /* Para posicionamento absoluto */
+  top: 50%; /* Alinha verticalmente */
+  left: 0; /* Alinha à esquerda */
+  transform: translatey(-50%); /* Centraliza verticalmente */
+  cursor: pointer; /* Altera o cursor ao passar o mouse */
+  outline: 1px solid var(--color03); /* Borda de destaque */
+  animation: slide-back .3s; /* Animação de entrada */
+}
+
+/* Animações */
+@keyframes slide-in {
+  from {
+    left: 0; /* Inicia na posição 0 */
+  }
+  to {
+    left: 50%; /* Move para a posição 50% */
+  }
+}
+@keyframes slide-back {
+  from {
+    left: 50%; /* Inicia na posição 50% */
+  }
+  to {
+    left: 0; /* Move para a posição 0 */
+  }
+}
+
+/* Estilos do modo escuro */
+.dark header #darkmode-container i {
+  animation: slide-in .3s forwards; /* Animação ao ativar o modo escuro */
+  background-color: var(--bg-color); /* Cor de fundo no modo escuro */
+  color: var(--color02); /* Cor do ícone no modo escuro */
+}
+.dark header #darkmode-container .fa-moon {
+  display: block; /* Exibe o ícone da lua no modo escuro */
+}
+.dark header #darkmode-container .fa-sun {
+  display: none; /* Esconde o ícone do sol no modo escuro */
+}
+
+/* Conteúdo Principal */
+#container {
+  width: 90%; /* Largura do container */
+  max-width: 1280px; /* Largura máxima */
+  margin: auto; /* Centraliza o container */
+  padding: 2rem 0; /* Preenchimento vertical */
+  display: flex; /* Usa flexbox para layout */
+  gap: 3rem; /* Espaçamento entre colunas */
+}
+#container #posts-container {
+  flex: 3 1 0; /* Permite que o container de posts ocupe mais espaço */
+}
+#posts-container .post {
+  margin-bottom: 2.5rem; /* Espaçamento entre posts */
+}
+#posts-container .post img {
+  width: 100%; /* Imagem ocupa toda a largura */
+  margin-bottom: 1rem; /* Espaçamento abaixo da imagem */
+}
+.post .title,
+.post .description,
+.post .author {
+  margin-bottom: 1rem; /* Espaçamento entre elementos do post */
+}
+.post .title {
+  font-size: 2rem; /* Tamanho da fonte do título */
+  font-weight: 600; /* Peso da fonte */
+}
+.post .author {
+  font-weight: 600; /* Peso da fonte do autor */
+}
+.post .view-more {
+  display: inline-block; /* Exibe como bloco inline */
+  background-color: var(--color02); /* Cor de fundo do botão */
+  color: var(--bg-color); /* Cor do texto do botão */
+  padding: .5rem 1.5rem; /* Preenchimento do botão */
+  cursor: pointer; /* Altera o cursor ao passar o mouse */
+  border: none; /* Remove borda padrão */
+  border-radius: .5rem; /* Bordas arredondadas */
+  font-weight: 600; /* Peso da fonte do botão */
+}
+.post .view-more:hover {
+  color: var(--color01); /* Cor do texto ao passar o mouse */
+}
+.dark .post .view-more:hover {
+  color: var(--color01); /* Cor do texto ao passar o mouse no modo escuro */
+}
+
+/* Barra Lateral */
+#side-bar {
+  flex: 1 1 0; /* Permite que a barra lateral ocupe o espaço restante */
+}
+#side-bar #search-bar,
+#side-bar #categories,
+#side-bar #tags {
+  padding: 1.5rem; /* Preenchimento das seções */
+  margin-bottom: 1rem; /* Espaçamento entre seções */
+  border: 1px solid var(--color03); /* Borda ao redor das seções */
+}
+#side-bar #tags {
+  position: sticky; /* Mantém a posição ao rolar */
+  top: 1rem; /* Distância do topo */
+}
+#side-bar #search-bar h4,
+#side-bar #categories h4,
+#side-bar #tags h4 {
+  margin-bottom: 1rem; /* Espaçamento abaixo dos títulos */
+  font
+}
